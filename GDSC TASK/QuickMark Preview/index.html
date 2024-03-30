@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickMark Preview</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url("https://img.freepik.com/free-photo/abstract-digital-grid-black-background_53876-97647.jpg");
+            background-size: cover;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+        }
+        h1{
+            font-weight: bold;
+            font-size: 45px;
+        }
+        h1::first-letter
+        {
+            font-size: 55px;
+            color: red;
+        }
+        .container 
+        {
+            width: 80%;
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 200px;
+        }
+        
+        textarea
+         {
+            font-size: 20px;
+            width: 60%;
+            height: 300px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            resize: vertical;
+            outline: none;
+            background-color: transparent;
+            color: white;
+            box-shadow: 10px 15px 20px cyan;
+            animation-name: textarea;
+            animation-duration: 2.5s;
+            animation-iteration-count: infinite;
+        }
+        @keyframes textarea
+        {
+            from{    box-shadow: 10px 15px 20px cyan; }
+            to{    box-shadow: -10px -15px 20px cyan ; }
+        }
+        
+        button {
+            font-weight: bold;
+            display: block;
+            padding: 10px;
+            background-color: black;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            margin: 100px auto;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            border: 1px solid white;
+            border-radius: 10px;
+            width: 100px;
+            height: 45px;
+        }
+        button:hover{
+            background-color: #fff;
+            color: black;
+            border: 1px solid black;
+        
+        }
+        #renderedOutput{
+            border: 1px solid #ccc;
+            border-radius: 15px;
+            width: 60%;
+            padding: 10px;
+            overflow-y: auto;
+            max-height: 400px;
+            color: white;
+            margin-left: 230px;
+        
+            
+        }
+        .foot
+               {
+                 margin-top: 30px;
+                 color: white;
+                 text-decoration: none;
+                 text-align: right;
+                 font-size: 20px;
+               }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <marquee width="100%" behavior="alternate" style="color: aliceblue;">  
+            <h1>QUICKMARK  PREVIEW</h1>
+            </marquee>
+        <div class="editor">
+            <textarea id="markdownInput" placeholder="Enter Markdown text here..."></textarea>
+        </div>
+        <button id="convertButton">Convert</button>
+        <div id="renderedOutput"></div>
+    </div>
+    <footer>
+        <div class="foot">&copy; Design by Kumar Karthikk</div>
+    </footer>
+    <script>
+        document.getElementById('convertButton').addEventListener('click', function() {
+            const htmlText = document.getElementById('markdownInput').value;
+            const markdownOutput = document.getElementById('renderedOutput');
+            markdownOutput.textContent = toMarkdown(htmlText);
+        });
+        
+        function toMarkdown(html) {
+            // Simple implementation to strip HTML tags
+            const div = document.createElement('div');
+            div.innerHTML = html;
+            return div.innerText;
+        }
+        
+    </script>
+    
+</body>
+</html>
